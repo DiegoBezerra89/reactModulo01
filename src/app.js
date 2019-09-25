@@ -25,7 +25,7 @@ class App extends Component {
         return (
             <div className='container'>
                 <Square color={this.state.color} /> {/*Cria um retangulo verde*/}
-                {['red', 'green', 'blue'].map((color) => ( //Cria um vetor de botões com os nomes do array
+                {['red', 'green', 'blue', 'purple', 'yellow'].map((color) => ( //Cria um vetor de botões com os nomes do array
                     <Button key= {color} handleClick={() => this.setState({ color })}>
                         {color} {/*nomeia os botões com os conteudos do array*/}
                     </Button>
