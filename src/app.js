@@ -1,6 +1,8 @@
 'use strict'
 
 import React, { Component } from 'react'
+import Button from './button'
+import Square from './square'
 
 
 /*
@@ -12,10 +14,22 @@ import React, { Component } from 'react'
 //Modo com classes Es6
 class App extends Component {
 
-    
+    constructor() {
+        super()
+        this.state = {
+            color: 'green'
+        }
+    }
+
     render () {
         return (
             <div className='container'>
+                <Square color={this.state.color} /> {/*Cria um retangulo verde*/}
+                {['red', 'green', 'blue'].map((color) => ( //Cria um vetor de botões com os nomes do array
+                    <Button key= {color} handleClick={() => this.setState({ color })}>
+                        {color} {/*nomeia os botões com os conteudos do array*/}
+                    </Button>
+                ))}
             </div>    
         )
     }
@@ -35,9 +49,8 @@ class App extends Component {
 export default App
 
 
-//statefull
+// ############# statefull
 /*
-
 class App extends Component {
     constructor () {
         super()
@@ -49,7 +62,7 @@ class App extends Component {
     render () {
         return (
             <div className='container' onClick={() => this.setState({
-                text: 'seu cu!'
+                text: 'mudou o texto!'
             })}>
                 {this.state.text}
             </div>    
