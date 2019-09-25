@@ -1,8 +1,8 @@
 'use strict'
 
 import React, { Component } from 'react'
-import Title from './title'
-import Square from './square'
+
+
 /*
     há algumas mudanças em jsx e html
     class se escreve className
@@ -11,12 +11,11 @@ import Square from './square'
 
 //Modo com classes Es6
 class App extends Component {
+
+    
     render () {
         return (
             <div className='container'>
-                {['red', 'green', 'blue'].map((square) => (
-                    <Square key = {square} color = {square} /> //cada key serve para identificar cada elemento
-                ))}
             </div>    
         )
     }
@@ -35,3 +34,42 @@ class App extends Component {
 
 export default App
 
+
+//statefull
+/*
+
+class App extends Component {
+    constructor () {
+        super()
+        this.state = {
+            text: 'clique aqui'
+        }
+    }
+    
+    render () {
+        return (
+            <div className='container' onClick={() => this.setState({
+                text: 'seu cu!'
+            })}>
+                {this.state.text}
+            </div>    
+        )
+    }
+}
+
+*/
+
+
+/*
+
+===== Statefull and Stateless components
+
+## STATEFULL
+    - pode manipular estados
+
+## STATELESS
+    - não manipulam estados
+    - funções pura não manipulam estados
+    - não há 'this'
+
+*/
