@@ -86,3 +86,26 @@ class App extends Component {
     - não há 'this'
 
 */
+
+
+//LIFECYCLE 
+
+/*
+
+Ciclo de vida de um componente
+
+- mounting / unmounting
+    métodos: 
+        - componentWillMount: o componente será montado, o momento de antes dele montar
+        - componentDidMount: quando o componente acabou de ser montado
+        - componentWillUnmount: quando o componente será desmontado, ou removido da tela
+        - 
+
+- updating
+    métodos:
+        - componenteWillReceiveProps(nextProps): o momento em que o componente irá receber novas props, pegar por parametro essas novas props
+        - shouldComponentUpdate (nextProps, nextState) => bool: componente deve ou não ser atualizado, recebe a proxima prop, e o proximo estado como parametros
+        - componentWillUpdate(nextProps, nextState): momento antes da atualização
+        - componentDidUpdate(prevProps, prevState): consegue pegar o estado e props anteriores
+
+*/
