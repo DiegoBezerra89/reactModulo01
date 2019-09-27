@@ -1,8 +1,8 @@
 'use strict'
 
 import React, { Component } from 'react'
-import Button from './button'
-import Square from './square'
+import Timer from './timer'
+import { runInThisContext } from 'vm'
 
 
 /*
@@ -13,23 +13,23 @@ import Square from './square'
 
 //Modo com classes Es6
 class App extends Component {
-
     constructor() {
+        console.log('constructor')
         super()
         this.state = {
-            color: 'green'
+            showTimer: true,
+            time: 0
         }
     }
+
 
     render () {
         return (
             <div className='container'>
-                <Square color={this.state.color} /> {/*Cria um retangulo verde*/}
-                {['red', 'green', 'blue', 'purple', 'yellow'].map((color) => ( //Cria um vetor de botões com os nomes do array
-                    <Button key= {color} handleClick={() => this.setState({ color })}>
-                        {color} {/*nomeia os botões com os conteudos do array*/}
-                    </Button>
-                ))}
+                <Timer time={ this.state.time } />
+                <button onClick={() => {
+                    this.setState({ time: this.state.time + 10})
+                }}>Change props</button>
             </div>    
         )
     }
@@ -72,6 +72,35 @@ class App extends Component {
 
 */
 
+/*
+
+class App extends Component {
+
+    constructor() {
+        super()
+        this.state = {
+            color: 'green'
+        }
+    }
+
+    render () {
+        return (
+            <div className='container'>
+                <Square color={this.state.color} /> {/*Cria um retangulo verde}
+                {['red', 'green', 'blue', 'purple', 'yellow'].map((color) => ( //Cria um vetor de botões com os nomes do array
+                    <Button key= {color} handleClick={() => this.setState({ color })}>
+                        {color} {/*nomeia os botões com os conteudos do array}
+                    </Button>
+                ))}
+            </div>    
+        )
+    }
+}
+
+*/
+
+
+
 
 /*
 
@@ -88,8 +117,9 @@ class App extends Component {
 */
 
 
-//LIFECYCLE 
-
+//
+// ############## LIFECYCLE 
+//
 /*
 
 Ciclo de vida de um componente
@@ -107,5 +137,37 @@ Ciclo de vida de um componente
         - shouldComponentUpdate (nextProps, nextState) => bool: componente deve ou não ser atualizado, recebe a proxima prop, e o proximo estado como parametros
         - componentWillUpdate(nextProps, nextState): momento antes da atualização
         - componentDidUpdate(prevProps, prevState): consegue pegar o estado e props anteriores
+
+*/
+
+//##################################
+
+/*
+
+class Timer extends Component {
+    constructor () {
+        super()
+        this.state = {
+            time: 0
+        }
+        this.timer //variavel para receber o setInterval
+    }
+
+    componentDidMount() { //aqui eu crio elemento do DOM
+        this.timer = setInterval(() => {
+            this.setState({
+                time: this.state.time + 1
+            })
+        },1000)
+    }
+
+    componentWillUnmount() { //momento em que os eventos manuais são removidos, aqui eu destruo os componentes
+        clearInterval(this.timer) //desmontando o componente do timer
+    }
+
+    render() {
+        return  <div>Timer: {this.state.time}</div>
+    }
+}
 
 */
