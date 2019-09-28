@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react'
 import Timer from './timer'
-import { runInThisContext } from 'vm'
+
 
 
 /*
